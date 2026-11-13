@@ -96,40 +96,6 @@ flowchart LR
 
 JavaScript requirements are in [package.json](package.json), [server/package.json](server/package.json) and both lockfiles. Python requirements are in [requirements.txt](requirements.txt). Python libraries alone do not install the React/Node system.
 
-### From the developer ZIP
-
-1. Extract `GML_Developer_Complete.zip` into a folder you control. Open its **iGrid** folder in VS Code.
-2. Open the integrated terminal in that folder, where `package.json` is visible. Run:
-
-```powershell
-node --version
-npm.cmd --version
-npm.cmd run setup
-```
-
-The setup installs frontend and Node-backend dependencies and creates missing local configuration from examples. Existing credentials and registry files are preserved. It does **not** install Node or Python on the computer.
-
-3. Edit `server/.env` privately. Enter dedicated MQTT username/password; never your normal IAMMETER account login. The authorized developer ZIP includes the meter registry; the public GitHub ZIP uses placeholders. Replace placeholders in `server/meters.json` when using public source. Keep public building IDs unchanged.
-4. Start:
-
-```powershell
-npm.cmd run dev
-```
-
-Open the printed URL, normally **http://localhost:5173**. The UI can be opened without MQTT credentials, but measured workspaces will accurately show unavailable data. Inverter simulation and explicit thermal simulation remain available. Do not interpret an open dashboard as evidence of a live feed.
-
-Stop from another terminal in the same project folder:
-
-```powershell
-npm.cmd stop
-```
-
-On Linux/macOS, use `npm` instead of `npm.cmd`. To install Python dependencies locally:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-```
 
 ### From GitHub
 
@@ -168,14 +134,6 @@ npm.cmd run preview
 ```
 
 `src/` contains editable frontend code. `public/` contains model/logo assets. `dist/` is generated; change source and rebuild instead of editing it. See [the file map](softwaredetails.md#file-and-folder-guide).
-
-## Host at /research
-
-Follow **[CPANEL.md](CPANEL.md)**. The frontend belongs in `gml-console/dist`, the Python backend in `gml-console/python_backend`, and database/secrets in a separate `gml-private` folder. Passenger exposes `/research/`; the private folder is never placed in `public_html`. The account's zero-application limit and persistent-process policy must be resolved by KU.
-
-
-
-
 
 ## Documentation and credit
 
