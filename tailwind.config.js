@@ -1,0 +1,43 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  darkMode: ['class', '[data-theme="dark"]'],
+  theme: {
+    extend: {
+      colors: {
+        bg: 'rgb(var(--bg) / <alpha-value>)',
+        s1: 'rgb(var(--s1) / <alpha-value>)',
+        s2: 'rgb(var(--s2) / <alpha-value>)',
+        s3: 'rgb(var(--s3) / <alpha-value>)',
+        line: 'rgb(var(--line) / <alpha-value>)',
+        ink: 'rgb(var(--ink) / <alpha-value>)',
+        ink2: 'rgb(var(--ink2) / <alpha-value>)',
+        ink3: 'rgb(var(--ink3) / <alpha-value>)',
+        steel: 'rgb(var(--steel) / <alpha-value>)',
+        navy: 'rgb(var(--navy) / <alpha-value>)',
+        onnavy: 'rgb(var(--on-navy) / <alpha-value>)',
+        bar: 'rgb(var(--bar) / <alpha-value>)',
+        barink: 'rgb(var(--bar-ink) / <alpha-value>)',
+        brand: 'rgb(var(--brand) / <alpha-value>)',
+        leaf: 'rgb(var(--leaf) / <alpha-value>)',
+        ok: 'rgb(var(--ok) / <alpha-value>)',
+        warn: 'rgb(var(--warn) / <alpha-value>)',
+        bad: 'rgb(var(--bad) / <alpha-value>)',
+        ember: 'rgb(var(--ember) / <alpha-value>)',
+        teal: 'rgb(var(--teal) / <alpha-value>)',
+        sun: 'rgb(var(--sun) / <alpha-value>)',
+        pa: 'rgb(var(--pa) / <alpha-value>)',
+        pb: 'rgb(var(--pb) / <alpha-value>)',
+        pc: 'rgb(var(--pc) / <alpha-value>)',
+      },
+      fontFamily: {
+        sans: ['Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        serif: ['Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'Consolas', 'ui-monospace', 'monospace'],
+      },
+      borderRadius: { sm: '3px', md: '4px', lg: '6px' },
+      transitionTimingFunction: { out: 'cubic-bezier(0.22,1,0.36,1)' },
+    },
+  },
+  plugins: [],
+}

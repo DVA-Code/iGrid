@@ -1,0 +1,8 @@
+import {useEffect,useState} from 'react'
+import {useStore} from '@/lib/store'
+const layers=[['Application','MQTT messages / WebSocket updates'],['Presentation','JSON text and numeric fields'],['Session','Connection and MQTT session lifecycle'],['Transport','TCP · reliable ordered delivery'],['Network','IP · routing between networks'],['Data link','Wi-Fi / Ethernet frames'],['Physical','Radio signal / wired media']]
+export function OsiLayers({timestamp,active}:{timestamp:number;active:boolean}){
+ const [step,setStep]=useState(-1),reduced=useStore(s=>s.reducedMotion)
+ useEffect(()=>{if(!active||!timestamp||reduced){setStep(-1);return}const timers=layers.map((_,i)=>setTimeout(()=>setStep(i),i*220));timers.push(setTimeout(()=>setStep(-1),1900));return()=>timers.forEach(clearTimeout)},[timestamp,active,reduced])
+ return <section className="surface rounded p-5"><div className="mb-5"><h3 className="text-base font-semibold">OSI · seven layers</h3><p className="mt-1 text-xs text-ink3">Conceptual mapping of one reading. Highlights follow receipt; they are not measured network timings. MQTT does not create a separate header at every OSI layer.</p></div><ol className="mx-auto max-w-2xl space-y-2">{layers.map(([name,detail],i)=><li key={name} className="mx-auto flex flex-wrap items-center gap-3 rounded border hair px-4 py-3 transition-colors" style={{width:`${76+i*4}%`,background:step===i?'rgb(var(--navy))':'rgb(var(--s2))',color:step===i?'rgb(var(--on-navy))':undefined,boxShadow:'3px 3px 0 rgb(var(--line)/.08)'}}><span className="font-mono text-xs">{7-i}</span><b className="text-xs">{name}</b><small className="ml-auto text-[10px]">{detail}</small></li>)}</ol></section>
+}

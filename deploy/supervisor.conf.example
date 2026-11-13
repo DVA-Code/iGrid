@@ -1,0 +1,17 @@
+; Ask the hosting provider to install this only if Supervisor is supported.
+; Replace ACCOUNT and the Python interpreter with actual host paths.
+[program:gml-collector]
+directory=/home/ACCOUNT/gml-console
+command=/home/ACCOUNT/gml-venv/bin/python -m python_backend.collector --instance supervisor
+environment=GML_ENV="/home/ACCOUNT/gml-private/gml.env",GML_MODE="production"
+user=ACCOUNT
+autostart=true
+autorestart=true
+startsecs=10
+stopwaitsecs=15
+stopsignal=TERM
+umask=0077
+redirect_stderr=true
+stdout_logfile=/home/ACCOUNT/gml-private/collector.log
+stdout_logfile_maxbytes=5MB
+stdout_logfile_backups=3

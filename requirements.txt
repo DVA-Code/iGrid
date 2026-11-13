@@ -1,0 +1,3 @@
+﻿# Python dependencies for the hosted backend and Python backend tests.
+# Node/React dependencies are installed separately with npm run setup.
+-r python_backend/requirements.txt

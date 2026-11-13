@@ -1,0 +1,9 @@
+import {useEffect,useState} from 'react'
+import {BRIDGE_HTTP,METERS,type StoredEvent,useStore} from '@/lib/store'
+import {Card,CardHead} from './ui/ui'
+export function EventLog(){
+ const [days,setDays]=useState(7),[sn,setSn]=useState(''),[rows,setRows]=useState<StoredEvent[]>([]),[state,setState]=useState('Loading events…')
+ const bridge=useStore(s=>s.bridge),latest=useStore(s=>s.events[0]?.id)
+ useEffect(()=>{let alive=true;const load=async()=>{if(!BRIDGE_HTTP||bridge!=='open'){setState('Bridge offline. Stored events remain on the lab computer.');return}try{const r=await fetch(`${BRIDGE_HTTP}/api/events?from=${Date.now()-days*86400000}${sn?`&sn=${sn}`:''}`);if(!r.ok)throw Error();const j=await r.json();if(alive){setRows(j.events);setState(j.events.length?'':'No events in this period.')}}catch{if(alive)setState('Event history unavailable.')}};load();return()=>{alive=false}},[bridge,days,sn,latest])
+ return <Card><CardHead title="Recorded events" sub="Persistent MQTT, voltage and counter events"/><div className="mb-4 flex flex-wrap gap-3"><select aria-label="Event period" value={days} onChange={e=>setDays(+e.target.value)} className="rounded border hair bg-s2 p-2"><option value={1}>24 hours</option><option value={7}>7 days</option><option value={30}>30 days</option></select><select aria-label="Event meter" value={sn} onChange={e=>setSn(e.target.value)} className="rounded border hair bg-s2 p-2"><option value="">All meters</option>{METERS.map(m=><option key={m.sn} value={m.sn}>{m.short}</option>)}</select></div>{state?<p className="text-sm text-ink3">{state}</p>:<ol className="max-h-72 space-y-3 overflow-auto text-xs">{rows.map(r=><li key={r.id} className="border-b hair pb-2"><time className="text-ink3">{new Date(r.t).toLocaleString('en-GB',{timeZone:'Asia/Kathmandu'})} NPT</time><b className="ml-2">{METERS.find(m=>m.sn===r.sn)?.short??'Bridge'}</b><p className="mt-1">{r.kind} · {r.detail}</p></li>)}</ol>}</Card>
+}

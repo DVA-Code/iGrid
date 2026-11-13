@@ -1,0 +1,20 @@
+{
+  "name": "gml-live-server",
+  "version": "1.0.0",
+  "description": "GML live bridge: IAMMETER MQTT to dashboard, with history storage",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "check": "node check.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "mqtt": "^5.16.1",
+    "ws": "^8.22.1"
+  },
+  "type": "module"
+}

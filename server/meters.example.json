@@ -1,0 +1,51 @@
+[
+  {
+    "sn": "EXAMPLE01",
+    "id": "main-transformer",
+    "name": "Main Transformer",
+    "model": "WEM3080T-500",
+    "role": "transformer"
+  },
+  {
+    "sn": "EXAMPLE02",
+    "id": "block-7",
+    "name": "Bio-Tech Department (Block 7)",
+    "model": "WEM3080T-150",
+    "role": "building"
+  },
+  {
+    "sn": "EXAMPLE03",
+    "id": "block-6",
+    "name": "Block 6 (Department of Physics)",
+    "model": "WEM3080T-150",
+    "role": "building"
+  },
+  {
+    "sn": "EXAMPLE04",
+    "id": "block-11",
+    "name": "Block 11 (Department of Civil Engineering)",
+    "model": "WEM3080T-150",
+    "role": "building"
+  },
+  {
+    "sn": "EXAMPLE05",
+    "id": "block-10",
+    "name": "Block 10 (Department of Management Information)",
+    "model": "WEM3080T-150",
+    "role": "building"
+  },
+  {
+    "sn": "EXAMPLE06",
+    "id": "block-8",
+    "name": "Block 8 (Department of Electrical and Electronics)",
+    "model": "WEM3080T-500",
+    "role": "building"
+  },
+  {
+    "sn": "EXAMPLE07",
+    "id": "boys-hostel",
+    "name": "Boys Hostel",
+    "model": "Three phase",
+    "role": "building"
+  }
+]

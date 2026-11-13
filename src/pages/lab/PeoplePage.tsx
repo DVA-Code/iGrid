@@ -1,0 +1,11 @@
+import {useState} from 'react'
+import {Link} from 'react-router-dom'
+import {advisors,teams,type Person} from './people.data'
+import './lab.css'
+function Portrait({person}:{person:Person}){
+ const [failed,setFailed]=useState(false)
+ const initials=person.name.replace(/^(Prof\. |Dr\. |Mr\. |Ms\. |Er\. )+/g,'').split(' ').filter(Boolean).map(n=>n[0]).slice(0,2).join('')
+ return <div className="lab-portrait">{failed?<span aria-label={`Portrait unavailable for ${person.name}`}>{initials}</span>:<img src={`${import.meta.env.BASE_URL}people/${encodeURIComponent(person.image)}`} alt={person.name} loading="lazy" decoding="async" width={240} height={270} onError={()=>setFailed(true)}/>}</div>
+}
+function PersonCard({person}:{person:Person}){return <article className="lab-person"><Portrait person={person}/><div className="lab-person-copy"><span className="lab-role">{person.role}</span><h3>{person.name}</h3><p>{person.affiliation}</p></div></article>}
+export default function PeoplePage(){return <div className="workspace-content lab-page page-enter"><header className="lab-intro"><div><p className="lab-kicker">Kathmandu University</p><h2>Our people</h2><p>Faculty, industry advisors and researchers working on Nepal's power systems.</p></div><Link className="console-button" to="/about">About the laboratory</Link></header><section className="lab-section" aria-labelledby="lab-advisors"><div className="lab-section-heading"><h2 id="lab-advisors">Lab lead &amp; advisors</h2><a href="https://gmlab.ku.edu.np/People.html" target="_blank" rel="noreferrer">Official directory ↗</a></div><div className="lab-people-grid">{advisors.map(p=><PersonCard person={p} key={p.name}/>)}</div></section><div className="lab-section-heading lab-project-heading"><div><h2>Project teams &amp; members</h2><p>Roles are shown for the listed project periods.</p></div></div>{teams.map(team=><section className="lab-section" key={team.id} aria-labelledby={`team-${team.id}`}><div className="lab-section-heading"><h3 id={`team-${team.id}`}>{team.name}</h3><span>{team.period}</span></div><div className="lab-people-grid">{team.members.map(p=><PersonCard person={p} key={p.name}/>)}</div></section>)}<p className="lab-source">Directory and portraits: <a href="https://gmlab.ku.edu.np/People.html" target="_blank" rel="noreferrer">Grid Modernization Laboratory</a>.</p></div>}
