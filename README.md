@@ -1,4 +1,4 @@
-﻿# iGrid - GRID Modernization Laboratory research
+﻿# iGrid - GRID Modernization Laboratory research OPEN SOURCE
 
 <p align="center"><img src="public/gml-logo.png" alt="Grid Modernization Laboratory" width="320"></p>
 
@@ -173,25 +173,13 @@ npm.cmd run preview
 
 Follow **[CPANEL.md](CPANEL.md)**. The frontend belongs in `gml-console/dist`, the Python backend in `gml-console/python_backend`, and database/secrets in a separate `gml-private` folder. Passenger exposes `/research/`; the private folder is never placed in `public_html`. The account's zero-application limit and persistent-process policy must be resolved by KU.
 
-## GitHub upload and handover
 
-- **`GML_GitHub_Ready.zip`:** extract first and upload/commit the contents of its `iGrid` folder to the repository root. Do not upload the ZIP itself as your repository source. Includes figures, documentation, lockfiles, requirements and placeholder meter settings.
-- **`GML_Developer_Complete.zip`:** full editable source, built frontend, documentation and authorized private meter registry. Credentials, collected history and dependencies are excluded. Do not publish this ZIP as public source.
-- **`gml-cpanel-v8.zip`:** smaller Python hosting package; follow `CPANEL.md` to extract it outside the web root.
 
-For an existing repository, clone it, create a branch, copy the extracted GitHub-ready files into the clone, review changes and push the branch. Do not force-push or overwrite unrelated existing work. See [GitHub publishing steps](docs/GITHUB_UPLOAD.md).
 
-## Evidence and limits
-
-The recorded local verification passed 55 automated tests and a production build. Earlier collection observed five fresh meter feeds; Civil and Boys Hostel had no messages in that observation. This is historical evidence, not a current availability claim. Missing telemetry cannot establish a physical power/wire fault.
-
-Hardware serials are replaced by building aliases in public responses. Dedicated MQTT credentials remain server-side. IAMMETER's documented port 1883 is plaintext; website HTTPS does not encrypt that leg. Forecasts are experimental baselines and require validation. Public readings are intentionally inspectable.
-
-The figures are labelled documentation illustrations plus the existing transformer render. Fresh browser captures were unavailable during this documentation update. Do not mistake the map preview or example charts for actual live screenshots.
 
 ## Documentation and credit
 
-[Software details](softwaredetails.md) · [Deployment guide](CPANEL.md) · [Technical report](docs/PROJECT_REPORT.md) · [Security notes](SECURITY_REVIEW.md) · [Professor email draft](docs/PROFESSOR_EMAIL.md)
+[Software details](softwaredetails.md)  [Technical report](docs/PROJECT_REPORT.md) ·
 
 **Grid Modernization Laboratory, Kathmandu University**
 
